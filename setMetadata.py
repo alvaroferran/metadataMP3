@@ -6,7 +6,7 @@ from glob import glob
 import subprocess
 
 
-for fileName in glob("*.mp3"):
+for fileName in glob("Music/*.mp3"):
     dashPos = fileName.find(" - ")
     if dashPos != -1:
         artist = fileName[:dashPos]
@@ -14,5 +14,5 @@ for fileName in glob("*.mp3"):
         args = ["id3v2", "--artist", " \"" + artist + "\" ", "--song", " \"" +
                 title + "\" ", fileName]
         subprocess.call(args)
-        os.rename(fileName, title)
+        os.rename(fileName, "Music/" + title + ".mp3")
 
